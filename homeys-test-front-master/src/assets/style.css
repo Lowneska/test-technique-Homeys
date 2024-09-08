@@ -1,0 +1,57 @@
+/* Les deux dernières lignes de cette classe seront
+deplacés vers une nouvelle classe à l'étape 2 et notification-content
+servira d'ébauche et de class plus générique*/
+.notification-content {
+  display: flex;
+  border-radius: 8px;
+  padding: 15px;
+  width: 30%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background-color: #E4E9F7;
+  border: 1px solid #96A8D8;
+}
+
+.notification-header-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Je ne me suis pas attardée sur la recherche de la police parfaite
+car je ne savais pas si c'était attendu alors je suis restée sur une police
+assez ressemblante */
+.notification-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+  color: #2d3748;
+}
+
+/* Meme chose pour cette police là*/
+.notification-body {
+  display: flex;
+  font-size: 8px;
+  color: #4a5568;
+  margin-top: 10px;
+}
+
+.notification-icon {
+  height: 18px;
+  margin-right: 12px;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  
+}
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+}
