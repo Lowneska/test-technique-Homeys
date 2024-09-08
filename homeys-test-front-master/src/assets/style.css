@@ -1,6 +1,4 @@
-/* Les deux dernières lignes de cette classe seront
-deplacés vers une nouvelle classe à l'étape 2 et notification-content
-servira d'ébauche et de class plus générique*/
+/* notification-content est maintenant une classe générique*/
 .notification-content {
   display: flex;
   border-radius: 8px;
@@ -8,6 +6,27 @@ servira d'ébauche et de class plus générique*/
   width: 30%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+/* Selon le type de la notification l'une des quatres classes suivantes
+vont completer le css de la div en plus de notification-content */
+
+.danger {
+  background-color: #F7E4E4;
+  border: 1px solid #D29393;
+}
+
+.warning {
+  background-color: #F7F2E4;
+  border: 1px solid #D4C296;
+}
+
+.success {
+  background-color: #E4F7E8;
+  border: 1px solid #89B291;
+}
+
+.info {
   background-color: #E4E9F7;
   border: 1px solid #96A8D8;
 }
