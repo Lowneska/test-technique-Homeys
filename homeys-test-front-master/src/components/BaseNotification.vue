@@ -1,14 +1,14 @@
 <template>
-    <!-- Template d'une notification : -->
-    <!-- Cette div a maintenant deux classe :notification-content et type, une classe dynamique.
-    Plus de précision sur style.css ! -->
-    <div :class="['notification-content', type]">
-        <!-- src va recevoir la source de l'icone selon le type transmis !-->
+    <!-- Template d'une notification :
+        Si show ==  true, la notification est affichée, sinon elle est cachée 
+    -->
+    <div :class="['notification-content', type]" v-show="show">
         <img class="notification-icon" :src="getIcon" >
         <div class="notification-header-body">
             <div class="notification-header">
                 <h3 class="notification-title">{{ title }}</h3>
-                <button class="notification-close" > &#x2715;
+                <!-- le bouton va appeler la fonction hideNotification une fois cliqué -->
+                <button class="notification-close" @click="hideNotification" > &#x2715;
                 </button>
             </div>
             <div class="notification-body">
@@ -19,10 +19,9 @@
 </template>
 
 <script setup>
-    import { defineProps, computed } from 'vue';
+    import { defineProps, computed, defineEmits, ref } from 'vue';
 
     /* Props :
-        Et on ajoute un troisième prop !
         - title : le titre de ma notification, un string requis
         - message : le contenue de ma notification, un string requis
         - type : spécifie le type de la notification ('danger', 'warning', 'success', 'info'),
@@ -65,6 +64,16 @@
             default :
                 return "";
         }
-
     })
+
+    const show = ref(true);
+
+    /* hideNotification :
+        Met la variable show a false.
+        Le composant disparait mais n'est pas effacé d'une quelconque liste.
+        Comme je n'ai pas de store le composant se réaffiche lorsque je recharge la page.
+    */
+    const hideNotification = () => {
+        show.value = false;
+    }
 </script>
