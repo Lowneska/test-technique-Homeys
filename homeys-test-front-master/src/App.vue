@@ -10,8 +10,12 @@ const types = ['danger', 'warning', 'success', 'info'];
 /*
   addNotification(BaseNotification) :
   Ajoute une notification à la liste des notifications
+  Si la liste est supérieure à 5, enlève le premier element de la liste
 */
 const addNotification = (newNotification) => {
+  if (notificationsList.value.length >= 5)
+    notificationsList.value.shift();
+
   notificationsList.value.push(newNotification);
 }
 
