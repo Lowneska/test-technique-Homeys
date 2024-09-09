@@ -1,14 +1,12 @@
 <template>
-    <!-- Template d'une notification :
-        Si show ==  true, la notification est affichée, sinon elle est cachée 
-    -->
-    <div :class="['notification-content', type]" v-show="show">
+    <!-- Template d'une notification :-->
+    <div :class="['notification-content', type]">
         <img class="notification-icon" :src="getIcon" >
         <div class="notification-header-body">
             <div class="notification-header">
                 <h3 class="notification-title">{{ title }}</h3>
-                <!-- le bouton va appeler la fonction hideNotification une fois cliqué -->
-                <button class="notification-close" @click="hideNotification" > &#x2715;
+                <!-- le bouton va appeler la fonction supressNotification une fois cliqué -->
+                <button class="notification-close" @click="supressNotification" > &#x2715;
                 </button>
             </div>
             <div class="notification-body">
@@ -46,6 +44,8 @@
         }
     });
 
+    //Evenements pouvants etre emis par le composant
+    const emit = defineEmits(['supress']);
     /* getIcon :
         Propriété computed qui aura pour valeur la route vers 
         l'icon qui correspond au type de la notification.
@@ -66,14 +66,11 @@
         }
     })
 
-    const show = ref(true);
-
-    /* hideNotification :
-        Met la variable show a false.
-        Le composant disparait mais n'est pas effacé d'une quelconque liste.
-        Comme je n'ai pas de store le composant se réaffiche lorsque je recharge la page.
+    /* hideNotification devient suppressNotifiation :
+        Emet un evenement supress.
+        Le composant est effacé.
     */
-    const hideNotification = () => {
-        show.value = false;
+    const supressNotification = () => {
+        emit('supress');
     }
 </script>
